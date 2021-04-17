@@ -17,6 +17,9 @@ class _HomepageState extends State<Homepage> {
   double initialheight = birdYaxis;
   bool gamehasStarted = false;
 
+  static double barrierXone =0;
+  double barrierXtwo =barrierXone +1.5;
+
   void jump(){
     setState(() {
       time= 0;
@@ -31,6 +34,8 @@ class _HomepageState extends State<Homepage> {
       time += 0.04;
       height = -4.9 * time * time + 2.8 * time;
       setState(() {
+        barrierXone -=0.05;
+        barrierXtwo -= 0.05;
         birdYaxis = initialheight- height;
       });
       if(birdYaxis > 1){
@@ -68,12 +73,35 @@ class _HomepageState extends State<Homepage> {
                     child: gamehasStarted ? Text(" "): Text("T A P  T O  P L A Y",style: TextStyle(fontSize: 20,color: Colors.white),),
                   ),
                   AnimatedContainer(
-                    alignment: Alignment(0,1.1),
+                    alignment: Alignment(barrierXone,1.1),
                     duration: Duration(milliseconds: 0),
                     child: MyBarrier(
                       size: 200.0,
                     ),
+                  ),
+                  AnimatedContainer(
+                    alignment: Alignment(barrierXone,-1.5),
+                    duration: Duration(milliseconds: 0),
+                    child: MyBarrier(
+                      size: 200.0,
+                    ),
+                  ),
+                  AnimatedContainer(
+                    alignment: Alignment(barrierXtwo,1.1),
+                    duration: Duration(milliseconds: 0),
+                    child: MyBarrier(
+                      size: 150.0,
+                    ),
+                  ),
+                  AnimatedContainer(
+                    alignment: Alignment(barrierXtwo,-1.5),
+                    duration: Duration(milliseconds: 0),
+                    child: MyBarrier(
+                      size: 250.0,
+                    ),
                   )
+
+
                 ],
               )
           ),
