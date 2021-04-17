@@ -65,8 +65,24 @@ class _HomepageState extends State<Homepage> {
               child: Container(
                 color: Colors.brown,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column()
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("SCORE",style: TextStyle(color: Colors.white,fontSize: 20),),
+                        SizedBox(height: 20,),
+                        Text("0",style: TextStyle(color: Colors.white,fontSize: 35),)
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("BEST",style: TextStyle(color: Colors.white,fontSize: 20),),
+                        SizedBox(height: 20,),
+                        Text("10",style: TextStyle(color: Colors.white,fontSize: 35),)
+                      ],
+                    )
                   ],
                 ),
               )
