@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flappybirdclone/barriers.dart';
 import 'package:flappybirdclone/bird.dart';
 import 'package:flutter/material.dart';
 
@@ -45,20 +46,35 @@ class _HomepageState extends State<Homepage> {
         children: [
           Expanded(
             flex: 2,
-              child: GestureDetector(
-                onTap: (){
-                  if(gamehasStarted){
-                    jump();
-                  }else{
-                    startGame();
-                  }
-                },
-                child: AnimatedContainer(
-                  alignment: Alignment(0,birdYaxis),
-                  duration: Duration(milliseconds: 0),
-                  color: Colors.blue,
-                  child: MyBird(),
-                ),
+              child: Stack(
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      if(gamehasStarted){
+                        jump();
+                      }else{
+                        startGame();
+                      }
+                    },
+                    child: AnimatedContainer(
+                      alignment: Alignment(0,birdYaxis),
+                      duration: Duration(milliseconds: 0),
+                      color: Colors.blue,
+                      child: MyBird(),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment(0, -0.3),
+                    child: gamehasStarted ? Text(" "): Text("T A P  T O  P L A Y",style: TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                  AnimatedContainer(
+                    alignment: Alignment(0,1.1),
+                    duration: Duration(milliseconds: 0),
+                    child: MyBarrier(
+                      size: 200.0,
+                    ),
+                  )
+                ],
               )
           ),
           Container(
